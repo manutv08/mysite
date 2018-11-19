@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+  <div class="proj_title jumbotron container  " >
+    <h1>Climate model based test work bench for <br> daylight-artificial light Integration.</h1>
+    <br>
+    <p>This project was my contribution towards the Department of Science & Technology funded research titled: <br> "<em>Test Workbench and Proof of concept prototype for building energy efficiency solutions <b>[TMD/CERI/BEE/2016/083]</b> </em>" </p>
+  </div>
+
+  <div class="jumbotron">
+    <div class="zoom" style='float:left; margin-right:10px; width: 200px; height: 200px;margin-left: 0px;background: url("/static/phillips_cert.JPG");  background-size: 100% 100%;'>
+
+    </div>
+    {# <img class="zoom" src="{% static "phillips_cert.png" %}" alt="Project Completion Certificate" style="width:200px; height:200px; float:left; margin-right:10px;"> #}
+
+  <p>From past two decades, quest to light the buildings with daylight is gaining interest from
+building owners and architects alike. Planned daylight harvesting schemes augment lighting
+energy savings in commercial buildings. The recent surge in interest is attributed to three
+major developments: recent discoveries of the impact of light on human health, the growing
+influence of ‘Green building rating schemes’ and progress in energy saving lamp/lighting
+control technologies</p>
+<p>Even now, in most of the commercial buildings sidelit windows
+are the only means of transporting daylight and warmth into the buildings. Depending upon
+climatic conditions, planning of daylighting in a building is crucial to ensure adequate
+daylight with glare control and illuminance uniformity. For this reason, efficient daylighting
+techniques require study of proper orientation of building particular to that climate, type of
+window glazing, lighting controls integrated with artificial light dimming and window
+shading systems. This strategy requires proper co-ordination between the structural,
+mechanical, and electrical systems. The intervention of these systems in a building admits
+daylight without excessive heat gain or glare. This demands considering an integrated
+approach combining the daylighting and automated lighting/window shading controls for
+lighting energy balance with visual comfort.</p>
+<p>Daylighting, the practise of utilising natural lighting within a building requires careful
+  planning to balance heat gain loss, control glare, illuminance uniformity and adjustments for variations in daylight
+availability. Control strategies for automated shadings are very promising for maintaining the desired visual and thermal comfort.
+The development of efficient control strategy for window blind control is very crucial as it combines the consequences of both visual and thermal comfort
+and energy optimization, which takes care of user presence as well as user wishes also. </p>
+<p>This project considers a fuzzy logic based window blind controller in view of visual and thermal comfort and energy optimization, which takes care of user presence as well as user wishes also</p>
+<br>
+<h3>Functional Partitioning of Project. </h3>
+<ul>
+  <li><b><u>Fuzzy Controller for blind:</u></b> <p>A Fuzzy controller for automated window
+blind system which provides visual comfort, thermal comfort and energy
+effectiveness. The fuzzy controller will give a blind position according
+to the Daylight on Window, Difference in Actual external Temperature
+and the set indoor temperature, solar altitude and occupant presence in
+a room. This part will also determine the luminaire brightness.</p> </li>
+
+<li><b><u>Direction for the motor rotation:</u></b>
+<p>This part will calculate the motor running direction. The motor should be run clockwise to close the blind
+downwards and anticlockwise to open the blind and let in the daylight.
+This will be based on the difference between present blind position and
+the required blind position.</p>
+</li>
+
+<li><b><u>Window Blind position control :</u></b>
+<p>This part will determine the duration of time required to rotate
+the motor to reach the set value. And also this will take care of starting
+and stopping the motor. All the required signals for the L298N motor
+driver will be coming from this part.</p>
+</li>
+
+<li><b><u>Light brightness control:</u></b>
+<p>This part will send the serial frame to the Luminaire Master
+controller unit to set the dimming level. Also, the Room illuminance
+level from the LRI1663 sensor will be received from the Master
+Controller Unit for calculating the brightness level.</p>
+</li>
+</ul>
+
+<div class="zoom col-xs-6" style= 'margin:auto; background: url("/static/program.jpg"); background-size: 100% 100%;'
+ ></div>
+<p style="text-align:center;">Fig.1. LabVIEW program</p>
+<h3>Fuzzy logic based window blind controller</h3>
+<p>Three fuzzy controllers used for two cases (user present and user absent)
+is shown in Figure 2. The Daylight on window (EDW), Solar altitude(ALT)
+and Temperature difference(TIDF) will be the input to these blocks; and &alpha;
+will be the output. The user presence is determined through the Sensor fixed
+on the Luminaire used here. The solar irradiance data is collected from the
+BF5 sunshine sensor, which will also provide us with the external temperature
+for the calculation of TIDF. The BF5 sunshine sensor is to be mounted on to
+the roof of the Test chamber free from obstructions. The daily solar irradiance
+data is logged on to a data logger GP1. The solar altitude is based on the
+site location, Mangalore The BF5 sunshine sensor will provide us the Total and Diffusion Radiation
+along with the external temperature data. The total and diff`usion radiation
+can be attained in units of Klux (illuminance). Analogue output range of 0
+to 2 Volts. The LRI1663 sensor isxed along with the luminaire for occupancy
+illuminance level data. The light sensor measures the total amount of light in
+the circulareld of approximately 3.9mtrs </p>
+<div class="zoom " style= ' background: url("/static/block_dig_1.jpg"); background-size: 100% 100%;' >
+</div>
+<p style="text-align:center;">Fig.2 Window Blind controller block diagram</p>
+<br>
+<p>The hardware after the controller (myRIO) used here is divided into two parts,
+as shown in Figure 3. The blind part will be controlled using the L298N motor driver and the Luminaires using Philips driver circuit. Both of these are
+kept separate. Data will be given to each of them serially from the controller. Luminaire will also give us the sensor data in an interval of 10 seconds. The
+fuzzy controller is designed in the LabVIEW platform, as shown in Figure 4 The serial communication for the Luminaire is done through various VISA functions in LabVIEW.</p>
+
+<center>
+  <figure>
+    <img src={% static "Connection.jpg" %} alt="Hardware" style="width:60%">
+    <figcaption style="text-align:center;">Fig.3 Hardware Block diagram</figcaption>
+  </figure>
+
+</center>
+
+
+<br>
+
+<div class="row">
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "EDW.jpg" %} alt="Effective Daylight" style="width:100%">
+      <figcaption style="text-align:center;">Fig.4(a) - EDW membership function.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "ALT.jpg" %} alt="Solar Altitude" style="width:100%">
+      <figcaption style="text-align:center;">Fig.4(b) - ALT membership function.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "Tidiff.jpg" %} alt="Temperature difference" style="width:100%" >
+      <figcaption style="text-align:center;">Fig.4(c) - TIDIFF membership function.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "se.jpg" %} alt="Surf Plot-1" style="width:100%; height:260px;" >
+      <figcaption style="text-align:center;">Fig.4(d) - Energy effectiveness Surf plot.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "sg.jpg" %} alt="Surf Plot-2" style="width:100%; " >
+      <figcaption style="text-align:center;">Fig.4(e) - Visual Comfort Surf plot.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "st.jpg" %} alt="Surf Plot-3" style="width:100%" >
+      <figcaption style="text-align:center;">Fig.4(f) - Visual Comfort and Thermal Comfort Surf plot.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "alphav.jpg" %} alt="Surf Plot-3" style="width:100%" >
+      <figcaption style="text-align:center;">Fig.4(g) - Visual comfort output membership function.</figcaption>
+    </figure>
+  </div>
+
+  <div class="col-md-6">
+    <figure>
+      <img src={% static "alpha.jpg" %} alt="Surf Plot-3" style="width:100%" >
+      <figcaption style="text-align:center;">Fig.4(h) - Visual Comfort and Thermal Comfort membership function.</figcaption>
+    </figure>
+  </div>
+
+</div>
+  </div>
+
+
+{% endblock %}
