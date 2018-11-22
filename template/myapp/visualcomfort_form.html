@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+
+
+
+<div class="proj_title jumbotron container" >
+  <h1>Automatic window shade position control;<br> based on occupant's visual comfort.</h1>
+  <br>
+  <p>A flexible Fuzzy Inference System (FIS) consisting of six rules, two inputs:
+     Effective daylight on window [Edw] and Solar Altitude [Alt] and one output variable which is Blind opening.
+    This FIS has been developed with the help of scikit-fuzzy toolkit and Django web framework. </p>
+</div>
+
+
+
+<div class="container jumbotron">
+		<form method="POST">
+      {% bootstrap_form form %}
+			{% csrf_token %}
+
+        <h3>Window Blind Position: {{ res }} %</h3>
+
+
+			<input type="submit" class="btn btn-primary" value="Calculate">
+		</form>
+	</div>
+
+{% endblock %}

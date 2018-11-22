@@ -35,13 +35,26 @@
           <div class="card-body d-flex flex-column align-items-start">
             <strong class="d-inline-block mb-2 text-primary">MTech Project</strong>
             <h3 class="mb-0">
-              <a class="text-dark" href="#">Climate model based test work bench for daylight-artificial light Integration.</a>
+              <a class="text-dark" href="{% url 'mtech' %}">Climate model based test work bench for daylight-artificial light Integration.</a>
             </h3>
 
             <p class="card-text mb-auto">This project describes a climate responsive test workbench for the real time testing of luminaire brightness control and window blinds position control in daylight-articial light integrated scheme.</p>
             <a href="{% url 'mtech' %}">Continue reading</a>
           </div>
           <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 250px; height: 250px;" src="{% static "sg.jpg" %}" data-holder-rendered="true">
+        </div>
+
+<div class="card flex-md-row mb-4 shadow-sm h-md-250 ">
+          <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-primary">MTech Project [Python Implementation.]</strong>
+            <h3 class="mb-0">
+              <a class="text-dark" href="{% url 'mtech_python' %}">Automatic window shade position control; based on occupant's visual comfort.</a>
+            </h3>
+
+            <p class="card-text mb-auto">This work is a web application, based on my MTech Project, developed using Python's <strong>scikit-fuzzy</strong> toolkit.</p>
+            <a href="{% url 'mtech_python' %}">Continue reading</a>
+          </div>
+          <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 250px; height: 250px;" src="{% static "Blind_python.jpg" %}" data-holder-rendered="true">
         </div>
 </div>
 

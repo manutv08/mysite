@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+{% load bootstrap3 %}
+
+
+<div class="proj_title jumbotron container  " >
+  <h1>Climate model based test work bench for <br> daylight-artificial light Integration.</h1>
+  <br>
+  <p>This project was my contribution towards the Department of Science & Technology funded research titled: <br> "<em>Test Workbench and Proof of concept prototype for building energy efficiency solutions <b>[TMD/CERI/BEE/2016/083]</b> </em>" </p>
+</div>
+
+{% block content %}
+
+<form method="POST" action="{% url 'mtech_python' %}" id="groupForm">
+  	{% bootstrap_form form %}
+  	<input type="submit" value="Create" class="btn btn-primary btn-large">
+  </form>
+
+{% endblock %}

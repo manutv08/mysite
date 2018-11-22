@@ -17,8 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from . import views
+from myapp.views import form_name_view
+# from myapp.views import form_name_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r"^$", views.HomePage.as_view(), name="home"),
-    path('projects/',views.MtechPage.as_view(),name="mtech"),
+    path('projects/1',views.MtechPage.as_view(),name="mtech"),
+    path('pr/',form_name_view,name="mtech_python"),
+
+
 ]
