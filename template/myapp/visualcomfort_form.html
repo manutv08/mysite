@@ -2,7 +2,31 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% block content %}
+<style>
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #2C57CE;
+    color: white;
+}
+</style>
 
 
 <div class="proj_title jumbotron container" >
@@ -26,5 +50,147 @@
 			<input type="submit" class="btn btn-primary" value="Calculate">
 		</form>
 	</div>
+
+  <div class="container jumbotron">
+    <p>The Fuzzy Inference System (FIS), developed here aims to minimize
+      discomforting glare coming inside a room, due to the sunlight. The algorithm is mainly inspired by
+    the features of the Total daylight on window, as it is a direct indication of window orientation, sky conditions and solar azimuth.
+    The solar incidence angle takes into account vertical illuminance, solar altitude and solar azimuth.</p>
+    <p>The <u>Edw input value ranges between 0 to 120 kilo lux</u>. The <a href="https://www.sciencedirect.com/science/article/pii/0038092X9090055H" target="_blank"> Perez Model</a> gives the
+      daylight availability based on longitude, latitude, standard meridian, day and time.
+      By knowledge of suns posistion in the sky at selected times of the day and year,
+       it is possible to calculate daylight on window [Edw].
+     The <u>Alt input value ranges between 0 to 90 Degrees</u>. This is the <a href="https://keisan.casio.com/exec/system/1224682331" target="_blank">solar elevation angle</a> , which varies
+   based on the time and date of the year.</p>
+   <p>Table 1. shown below are some real-time examples for your reference, taken at site location: Manipal(13.3605° N, 74.7864° E),India.
+   There are total 12 examples, from a day of three diffrent months.It can be seen from the first example, how the east facing
+ window is opened more compared to the west facing window of the same day. This is because the data was taken at 2:00 p.m,
+in the afternoon, when the sunlight will illuminating west facing window more comparatively.</p>
+<br>
+
+<center><h6>Table 1. <u>FIS Real-time data</u></h6></center>
+
+   <table id="customers">
+  <tr>
+    <th>S.No</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Window orientation</th>
+    <th>Edw [i/p 1]</th>
+    <th>Alt [i/p 2]</th>
+    <th>Window blind opening [o/p]</th>
+  </tr>
+  <tr>
+    <td>1.</td>
+    <td>04-Jan-2018</td>
+    <td>2:00:00 p.m</td>
+    <td>East</td>
+    <td>1831 lx</td>
+    <td>39.6<sup>o</sup></td>
+    <td>96.408 %</td>
+  </tr>
+  <tr>
+    <td>2.</td>
+    <td>04-Jan-2018</td>
+    <td>2:00:00 p.m</td>
+    <td>West</td>
+    <td>23134 lx</td>
+    <td>39.6<sup>o</sup></td>
+    <td>54.649 %</td>
+  </tr>
+  <tr>
+    <td>3.</td>
+    <td>04-Jan-2018</td>
+    <td>2:00:00 p.m</td>
+    <td>South</td>
+    <td>14786 lx</td>
+    <td>39.6<sup>o</sup></td>
+    <td>60.409 %</td>
+  </tr>
+  <tr>
+    <td>4.</td>
+    <td>04-Jan-2018</td>
+    <td>2:00:00 p.m</td>
+    <td>North</td>
+    <td>3640 lx</td>
+    <td>39.6<sup>o</sup></td>
+    <td>60.409 %</td>
+  </tr>
+  <tr>
+    <td>5.</td>
+    <td>11-Jul-2018</td>
+    <td>9:00:00 a.m</td>
+    <td>East</td>
+    <td>58295 lx</td>
+    <td>52.3<sup>o</sup></td>
+    <td>4.598 %</td>
+  </tr>
+  <tr>
+    <td>6.</td>
+    <td>11-Jul-2018</td>
+    <td>9:00:00 a.m</td>
+    <td>West</td>
+    <td>10360 lx</td>
+    <td>52.3<sup>o</sup></td>
+    <td>82.253 %</td>
+  </tr>
+  <tr>
+    <td>7.</td>
+    <td>11-Jul-2018</td>
+    <td>9:00:00 a.m</td>
+    <td>South</td>
+    <td>58957 lx</td>
+    <td>52.3<sup>o</sup></td>
+    <td>4.567 %</td>
+  </tr>
+  <tr>
+    <td>8.</td>
+    <td>11-Jul-2018</td>
+    <td>9:00:00 a.m</td>
+    <td>North</td>
+    <td>10159 lx</td>
+    <td>52.3<sup>o</sup></td>
+    <td>88.577 %</td>
+  </tr>
+  <tr>
+    <td>9.</td>
+    <td>10-Oct-2018</td>
+    <td>8:00:00 a.m</td>
+    <td>East</td>
+    <td>29316 lx</td>
+    <td>38.2<sup>o</sup></td>
+    <td>53.338 %</td>
+  </tr>
+  <tr>
+    <td>10.</td>
+    <td>10-Oct-2018</td>
+    <td>8:00:00 a.m</td>
+    <td>West</td>
+    <td>2915 lx</td>
+    <td>38.2<sup>o</sup></td>
+    <td>96.471 %</td>
+  </tr>
+  <tr>
+    <td>11.</td>
+    <td>10-Oct-2018</td>
+    <td>8:00:00 a.m</td>
+    <td>South</td>
+    <td>21791 lx</td>
+    <td>38.2<sup>o</sup></td>
+    <td>53.338 %</td>
+  </tr>
+  <tr>
+    <td>12.</td>
+    <td>10-Oct-2018</td>
+    <td>8:00:00 a.m</td>
+    <td>North</td>
+    <td>5182 lx</td>
+    <td>38.2<sup>o</sup></td>
+    <td>96.471 %</td>
+  </tr>
+
+</table>
+
+  </div>
 
 {% endblock %}
